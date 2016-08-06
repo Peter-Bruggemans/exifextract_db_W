@@ -107,7 +107,8 @@ try:
             # zet het resultaat van de doelinstructie om in een sql-instructie
             fields = result2.split("\t")
             #print lines.index(line)
-            sql = actie1 + ',\n'.join(map("'{0}'".format, fields)) + actie3
+            fields2 = [word.replace('\r\n','') for word in fields]
+            sql = actie1 + ',\n'.join(map("'{0}'".format, fields2)) + actie3
             teller = lines.index(line) + 1
             print str(teller) + " row(s) inserted"
             cur.execute(sql)
